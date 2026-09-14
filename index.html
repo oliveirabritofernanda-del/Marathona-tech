@@ -3,20 +3,20 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>AgroVerídico - Integridade e Checagem no Campo</title>
+    <title>AgroVerídico - Central Universal de Fact-Checking do Agro</title>
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
 <header class="header">
     <div class="container nav-container">
-        <div class="logo">🌱 AgroVerídico</div>
+        <div class="logo">🌱 AgroVerídico <span class="version-tag">AI & Data v2.0</span></div>
         <nav>
-            <a href="#buscador">Buscador</a>
-            <a href="#problema">O Problema</a>
-            <a href="#especialistas">Visão Técnica</a>
+            <a href="#buscador">Buscador Universal</a>
+            <a href="#problema">Diagnóstico</a>
+            <a href="#especialistas">Base Científica</a>
             <a href="#ficha">Ficha Técnica</a>
-            <a href="#apresentacao">Apresentação</a>
+
         </nav>
     </div>
 </header>
@@ -24,19 +24,36 @@
 <section class="hero" id="buscador">
     <div class="container hero-content">
         <h1>Informação científica para proteger quem produz e quem consome</h1>
-        <p>Plataforma oficial de combate à desinformação, boatinhos e manipulação visual no agronegócio brasileiro.</p>
+        <p>Buscador inteligente com cobertura universal: tire qualquer dúvida sobre o agro e receba um relatório embasado por órgãos oficiais.</p>
         
         <div class="search-card">
             <div class="search-box">
-                <input type="text" id="searchInput" placeholder="Digite um termo (ex: tomate, desmatamento, chapéu, arroz)...">
-                <button onclick="buscarChecagem()">Checar Fato</button>
+                <input type="text" id="searchInput" placeholder="Pergunte qualquer coisa (ex: agrotóxicos, carne, queimadas, preço do leite)...">
+                <button onclick="buscarChecagem()">Checar Agora</button>
             </div>
             
+            <div id="loading" class="loading-spinner">
+                <div class="spinner"></div>
+                <p>Cruzando dados com Embrapa, EMATER, CONAB, INPE e IBGE...</p>
+            </div>
+
             <div id="resultBox" class="result-box">
-                <span id="badge" class="badge"></span>
+                <div class="result-header">
+                    <span id="badge" class="badge"></span>
+                    <span id="trustScore" class="trust-score"></span>
+                </div>
                 <h3 id="resultTitle"></h3>
                 <p id="resultText"></p>
-                <div class="fonte-box" id="resultFonte"></div>
+                
+                <div id="contextDetails" class="context-details">
+                    <h4>🔍 Análise Técnica Detalhada:</h4>
+                    <ul id="detailsList"></ul>
+                </div>
+
+                <div class="fonte-box">
+                    <p id="resultFonte"></p>
+                    <div class="privacy-badge">🔒 Consulta Anônima e Protegida (LGPD)</div>
+                </div>
             </div>
         </div>
     </div>
@@ -45,51 +62,48 @@
 <section class="section" id="problema">
     <div class="container">
         <h2 class="section-title">O Problema e Diagnóstico</h2>
-        <p class="section-sub">A distância entre o produtor rural e o consumidor urbano cria um terreno fértil para narrativas falsas em redes sociais.</p>
+        <p class="section-sub">Entenda como a desinformação afeta a sociedade e a economia do país.</p>
 
         <div class="grid-4">
             <div class="card-info">
-                <h3>🍅 Descarte Proposital</h3>
-                <p>Vídeos fora de contexto alegam destruição deliberada para inflacionar preços, ignorando gargalos de frete, logística e clima.</p>
+                <h3>🍅 Descarte de Alimentos</h3>
+                <p>Mitos sobre destruição proposital ignoram perdas por clima e logística de frete.</p>
             </div>
             <div class="card-info">
-                <h3>🌳 Desmatamento Irrestrito</h3>
-                <p>Omitido o efeito "poupa-terra": a tecnologia brasileira permite aumentar a produção sem expandir a área cultivada.</p>
+                <h3>🌳 Sustentabilidade</h3>
+                <p>Confusão entre a produção legal e práticas ilegais combatidas pelo setor.</p>
             </div>
             <div class="card-info">
-                <h3>🧢 Boatos Regulatórios</h3>
-                <p>Mentiras sobre proibição de chapéu de palha ou licenças internacionais caras para pequenos agricultores.</p>
+                <h3>🧪 Insumos e Tecnologia</h3>
+                <p>Narrativas sem respaldo científico geram medo infundado no consumidor urbano.</p>
             </div>
             <div class="card-info">
                 <h3>🌾 Pânico de Abastecimento</h3>
-                <p>Alertas falsos sobre falta de arroz e feijão que geram corrida ao mercado e inflação temporária artificial.</p>
+                <p>Boatos sobre falta de estoque forçam corridas desnecessárias aos mercados.</p>
             </div>
         </div>
 
-        <div class="impact-banner">
-            <strong>⚠️ Impactos Nacionais:</strong> Prejuízo financeiro direto aos produtores, desconfiança do consumidor e danos à imagem do Brasil no mercado internacional.
-        </div>
     </div>
 </section>
 
 <section class="section bg-light" id="especialistas">
     <div class="container">
-        <h2 class="section-title">Olhar Profissional e Ciência</h2>
+        <h2 class="section-title">Visão Técnica e Apoio Científico</h2>
         <div class="grid-3">
             <div class="card-expert">
                 <div class="icon">👨‍🌾</div>
-                <h3>O Agrônomo</h3>
-                <p>Explica que o descarte de alimentos é sempre a última e pior opção do produtor, decorrendo unicamente de falhas de transporte ou pragas severas.</p>
+                <h3>Agrônomos</h3>
+                <p>Validação de boas práticas agrícolas e manejo correto de solo e culturas.</p>
             </div>
             <div class="card-expert">
                 <div class="icon">🚜</div>
-                <h3>O Técnico Agrícola</h3>
-                <p>Apresenta dados de campo provando que o manejo de solo e sementes geneticamente aprimoradas elevam a produtividade verticalmente.</p>
+                <h3>Técnicos Agrícolas</h3>
+                <p>Dados de campo e acompanhamento direto das safras e do pequeno produtor.</p>
             </div>
             <div class="card-expert">
                 <div class="icon">🔬</div>
-                <h3>Apoio Científico</h3>
-                <p>Toda a base de dados é fundamentada em relatórios oficiais de instituições como Embrapa, EMATER, CONAB, INPE e IBGE.</p>
+                <h3>Pesquisa Oficial</h3>
+                <p>Artigos e notas técnicas da Embrapa, CONAB, INPE, IBGE e EMATER.</p>
             </div>
         </div>
     </div>
@@ -102,66 +116,27 @@
             <table class="tech-table">
                 <tr>
                     <th>Nome</th>
-                    <td>AgroVerídico</td>
+                    <td>AgroVerídico (Maratona Tech)</td>
                 </tr>
                 <tr>
-                    <th>Tema</th>
-                    <td>Fake News no Agro / Integridade da Informação no Campo</td>
+                    <th>Tecnologia</th>
+                    <td>Buscador Universal com Filtragem por Intenção Algorítmica</td>
                 </tr>
                 <tr>
-                    <th>Solução</th>
-                    <td>Plataforma interativa de checagem técnica e esclarecimento com respaldo científico</td>
-                </tr>
-                <tr>
-                    <th>Público-Alvo</th>
-                    <td>Consumidores urbanos digitais e pequenos/médios produtores rurais</td>
-                </tr>
-                <tr>
-                    <th>Alcance</th>
-                    <td>Nacional, em alinhamento com as metas globais de integridade da informação (COP e G20)</td>
+                    <th>Escopo</th>
+                    <td>Nacional — Integração de dados públicos e educação digital urbana</td>
                 </tr>
             </table>
         </div>
     </div>
-</section>
 
-<section class="section bg-light" id="apresentacao">
-    <div class="container">
-        <h2 class="section-title">Estrutura de Apresentação (Slides)</h2>
-        <div class="slides-grid">
-            <div class="slide-card">
-                <span class="slide-num">Slide 1</span>
-                <h4>Introdução e Propósito</h4>
-                <p>Apresentação da marca e slogan focado em proteger quem produz e quem consome.</p>
-            </div>
-            <div class="slide-card">
-                <span class="slide-num">Slide 2</span>
-                <h4>A Epidemia de Mentiras</h4>
-                <p>Mapeamento visual dos 4 grandes boatos (Tomate, Desmatamento, Regras do Campo, Arroz).</p>
-            </div>
-            <div class="slide-card">
-                <span class="slide-num">Slide 3</span>
-                <h4>Diagnóstico e Impactos</h4>
-                <p>Demonstração das perdas econômicas, corrida aos mercados e danos reputacionais internacionais.</p>
-            </div>
-            <div class="slide-card">
-                <span class="slide-num">Slide 4</span>
-                <h4>Tecnologia pela Verdade</h4>
-                <p>Demonstração da plataforma AgroVerídico, motor de busca e sistema de selos explicativos.</p>
-            </div>
-            <div class="slide-card">
-                <span class="slide-num">Slide 5</span>
-                <h4>Viabilidade e Futuro</h4>
-                <p>Modelo de parcerias com Embrapa/EMATER e plano de expansão para chatbots sociais.</p>
-            </div>
-        </div>
-    </div>
+
 </section>
 
 <footer class="footer">
     <div class="container">
         <p>AgroVerídico — Plataforma de Integridade da Informação do Agronegócio Brasileiro.</p>
-        <p>Dados protegidos conforme a LGPD. Fontes: Embrapa, EMATER, CONAB, INPE e IBGE.</p>
+        <p>Desenvolvido para a Maratona Tech. Conformidade total com a LGPD.</p>
     </div>
 </footer>
 
