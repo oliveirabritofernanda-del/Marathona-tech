@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Meu Primeiro Site no GitHub</title>
+    <!-- Conecta o HTML com o arquivo de estilo (CSS) -->
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <header>
+        <h1>Bem-vindo ao Meu Site!</h1>
+        <p>Hospedado gratuitamente no GitHub Pages.</p>
+    </header>
+
+    <main class="container">
+        <section class="card">
+            <h2>Sobre o Projeto</h2>
+            <p>Este é um modelo básico de site utilizando HTML5, CSS3 e JavaScript. Você pode editar este texto para contar mais sobre você ou seus projetos.</p>
+            
+            <!-- Botão que vai interagir com o JavaScript -->
+            <button id="meuBotao">Clique Aqui</button>
+            <p id="mensagem" class="escondido">🎉 Parabéns! O código está funcionando perfeitamente.</p>
+        </section>
+    </main>
+
+    <footer>
+        <p>&copy; 2026 - Criado por Mim</p>
+    </footer>
+
+    <!-- Conecta o HTML com o arquivo de funções (JavaScript) -->
+    <script src="script.js"></script>
+</body>
+</html>
