@@ -1,0 +1,99 @@
+/* Configurações globais de estilo */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+body {
+    background-color: #f4f7f6;
+    color: #333;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+}
+
+/* Cabeçalho */
+header {
+    background-color: #24292e; /* Cor escura estilo GitHub */
+    color: white;
+    text-align: center;
+    padding: 2rem 1rem;
+}
+
+header h1 {
+    margin-bottom: 0.5rem;
+}
+
+/* Conteúdo Principal */
+.container {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 2rem;
+}
+
+.card {
+    background: white;
+    padding: 2.5rem;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    max-width: 500px;
+    text-align: center;
+}
+
+.card h2 {
+    color: #0366d6;
+    margin-bottom: 1rem;
+}
+
+.card p {
+    line-height: 1.6;
+    margin-bottom: 1.5rem;
+}
+
+/* Botão */
+button {
+    background-color: #2ea44f; /* Verde de confirmação */
+    color: white;
+    border: none;
+    padding: 0.75rem 1.5rem;
+    font-size: 1rem;
+    font-weight: bold;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: background 0.2s;
+}
+
+button:hover {
+    background-color: #22863a;
+}
+
+/* Mensagem Oculta */
+.escondido {
+    display: none;
+}
+
+.mostrar {
+    display: block;
+    margin-top: 1.5rem;
+    font-weight: bold;
+    color: #28a745;
+    animation: aparecer 0.5s ease-in-out;
+}
+
+@keyframes aparecer {
+    from { opacity: 0; transform: translateY(-10px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+/* Rodapé */
+footer {
+    background-color: #24292e;
+    color: #888;
+    text-align: center;
+    padding: 1rem;
+    font-size: 0.9rem;
+}
