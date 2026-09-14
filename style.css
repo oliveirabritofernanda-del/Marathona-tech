@@ -1,4 +1,4 @@
-/* Configurações globais de estilo */
+
 * {
     margin: 0;
     padding: 0;
@@ -14,9 +14,9 @@ body {
     min-height: 100vh;
 }
 
-/* Cabeçalho */
+
 header {
-    background-color: #24292e; /* Cor escura estilo GitHub */
+    background-color: #24292e; 
     color: white;
     text-align: center;
     padding: 2rem 1rem;
@@ -26,7 +26,7 @@ header h1 {
     margin-bottom: 0.5rem;
 }
 
-/* Conteúdo Principal */
+
 .container {
     flex: 1;
     display: flex;
@@ -54,7 +54,6 @@ header h1 {
     margin-bottom: 1.5rem;
 }
 
-/* Botão */
 button {
     background-color: #2ea44f; /* Verde de confirmação */
     color: white;
@@ -71,7 +70,7 @@ button:hover {
     background-color: #22863a;
 }
 
-/* Mensagem Oculta */
+
 .escondido {
     display: none;
 }
@@ -89,7 +88,7 @@ button:hover {
     to { opacity: 1; transform: translateY(0); }
 }
 
-/* Rodapé */
+
 footer {
     background-color: #24292e;
     color: #888;
