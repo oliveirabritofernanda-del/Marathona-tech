@@ -3,140 +3,135 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>AgroVerídico - Central Universal de Fact-Checking do Agro</title>
+    <title>AgroVerídico AI - Inteligência Universal de Checagem</title>
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
 <header class="header">
     <div class="container nav-container">
-        <div class="logo">🌱 AgroVerídico <span class="version-tag">AI & Data v2.0</span></div>
+        <div class="logo">
+            🌱 AgroVerídico <span class="ai-badge">AI Neural v3.5</span>
+        </div>
         <nav>
-            <a href="#buscador">Buscador Universal</a>
-            <a href="#problema">Diagnóstico</a>
-            <a href="#especialistas">Base Científica</a>
-            <a href="#ficha">Ficha Técnica</a>
-
+            <a href="#buscador">Buscador AI</a>
+            <a href="#diagnostico">Diagnóstico</a>
+            <a href="#ciencia">Base Científica</a>
+            <button id="themeToggle" class="theme-toggle-btn" onclick="alternarTema()">🌙 Modo Escuro</button>
         </nav>
     </div>
 </header>
 
 <section class="hero" id="buscador">
     <div class="container hero-content">
-        <h1>Informação científica para proteger quem produz e quem consome</h1>
-        <p>Buscador inteligente com cobertura universal: tire qualquer dúvida sobre o agro e receba um relatório embasado por órgãos oficiais.</p>
+        <h1>Inteligência Artificial para Checagem e Ciência no Campo</h1>
+        <p>Pergunte qualquer coisa. Nossa IA analisa o contexto, cruza dados oficiais e entrega uma resposta completa com suporte visual.</p>
+
+        <div class="quick-tags">
+            <span>Exemplos:</span>
+            <button onclick="preencherEBuscar('Produtores jogam tomate fora para subir o preço?')">Tomate e Frete</button>
+            <button onclick="preencherEBuscar('O agro desmata a Amazônia para plantar soja?')">Desmatamento e Soja</button>
+            <button onclick="preencherEBuscar('Agrotóxicos no Brasil causam doenças?')">Segurança dos Defensivos</button>
+            <button onclick="preencherEBuscar('Existe risco de faltar arroz nos supermercados?')">Abastecimento de Arroz</button>
+        </div>
         
         <div class="search-card">
             <div class="search-box">
-                <input type="text" id="searchInput" placeholder="Pergunte qualquer coisa (ex: agrotóxicos, carne, queimadas, preço do leite)...">
-                <button onclick="buscarChecagem()">Checar Agora</button>
+                <input type="text" id="searchInput" placeholder="Pergunte qualquer dúvida ou cole uma fake news..." />
+                <button onclick="executarChecagemIA()">Analisar com IA</button>
             </div>
             
-            <div id="loading" class="loading-spinner">
-                <div class="spinner"></div>
-                <p>Cruzando dados com Embrapa, EMATER, CONAB, INPE e IBGE...</p>
+            <div id="aiLoader" class="ai-loader">
+                <div class="pulse-ring"></div>
+                <p id="loaderStatus">Iniciando motor neural de checagem...</p>
             </div>
 
-            <div id="resultBox" class="result-box">
+            <!-- Card de Resposta Completa da IA -->
+            <div id="aiResultCard" class="ai-result-card">
                 <div class="result-header">
-                    <span id="badge" class="badge"></span>
+                    <span id="badgeSelo" class="badge"></span>
                     <span id="trustScore" class="trust-score"></span>
                 </div>
-                <h3 id="resultTitle"></h3>
-                <p id="resultText"></p>
-                
-                <div id="contextDetails" class="context-details">
-                    <h4>🔍 Análise Técnica Detalhada:</h4>
-                    <ul id="detailsList"></ul>
+
+                <h2 id="aiTitle"></h2>
+
+                <!-- Container da Imagem Dinâmica -->
+                <div class="image-container">
+                    <img id="aiResultImage" src="" alt="Imagem ilustrativa do tema" style="display: none;">
                 </div>
 
-                <div class="fonte-box">
-                    <p id="resultFonte"></p>
-                    <div class="privacy-badge">🔒 Consulta Anônima e Protegida (LGPD)</div>
+                <div class="section-block">
+                    <h4>📌 Resumo Executivo da IA</h4>
+                    <p id="aiSummary"></p>
+                </div>
+
+                <div class="section-block">
+                    <h4>🔍 Análise Técnica e Científica</h4>
+                    <div id="aiDeepAnalysis"></div>
+                </div>
+
+                <div class="section-block">
+                    <h4>🌾 Evidências e Dados Oficiais</h4>
+                    <ul id="aiEvidenceList"></ul>
+                </div>
+
+                <div class="section-block highlight-block">
+                    <h4>💡 Orientação ao Cidadão / Produtor</h4>
+                    <p id="aiActionGuidance"></p>
+                </div>
+
+                <!-- Botão de Curtir e Rodapé -->
+                <div class="card-action-bar">
+                    <button id="likeBtn" class="like-btn" onclick="curtirResposta()">
+                        <span class="heart-icon">❤️</span> <span id="likeText">Curtir esta análise</span> (<span id="likeCount">0</span>)
+                    </button>
+                </div>
+
+                <div class="card-footer">
+                    <div>
+                        <strong>Fontes Cruzadas:</strong> <span id="aiSources"></span>
+                    </div>
+                    <div class="lgpd-shield">🔒 Análise Anônima Protegida por LGPD</div>
                 </div>
             </div>
         </div>
     </div>
 </section>
 
-<section class="section" id="problema">
+<section class="section" id="diagnostico">
     <div class="container">
-        <h2 class="section-title">O Problema e Diagnóstico</h2>
-        <p class="section-sub">Entenda como a desinformação afeta a sociedade e a economia do país.</p>
+        <h2 class="section-title">Diagnóstico da Desinformação</h2>
+        <p class="section-sub">Como o AgroVerídico AI intercepta os maiores pilares de boatos no Brasil:</p>
 
         <div class="grid-4">
             <div class="card-info">
-                <h3>🍅 Descarte de Alimentos</h3>
-                <p>Mitos sobre destruição proposital ignoram perdas por clima e logística de frete.</p>
+                <img src="https://images.unsplash.com/photo-1592924357228-91a4daadcfea?w=400" alt="Tomates" class="card-img">
+                <h3>🍅 Logística vs. Cartel</h3>
+                <p>Descartes pontuais decorrem de falhas de transporte e frete inviável, jamais de estratégia deliberada de inflação.</p>
             </div>
             <div class="card-info">
-                <h3>🌳 Sustentabilidade</h3>
-                <p>Confusão entre a produção legal e práticas ilegais combatidas pelo setor.</p>
+                <img src="https://images.unsplash.com/photo-1500382017468-9049fed747ef?w=400" alt="Campo e Floresta" class="card-img">
+                <h3>🌳 Efeito Poupa-Terra</h3>
+                <p>A tecnologia brasileira permite aumentar a produção por hectare sem a necessidade de expansão territorial desenfreada.</p>
             </div>
             <div class="card-info">
-                <h3>🧪 Insumos e Tecnologia</h3>
-                <p>Narrativas sem respaldo científico geram medo infundado no consumidor urbano.</p>
+                <img src="https://images.unsplash.com/photo-1586771107445-d3ca888129ff?w=400" alt="Tecnologia no Campo" class="card-img">
+                <h3>🧢 Proteção Regulatória</h3>
+                <p>Falsas proibições trabalhistas e burocráticas são desmentidas com base nas Normas Regulamentadoras oficiais.</p>
             </div>
             <div class="card-info">
-                <h3>🌾 Pânico de Abastecimento</h3>
-                <p>Boatos sobre falta de estoque forçam corridas desnecessárias aos mercados.</p>
-            </div>
-        </div>
-
-    </div>
-</section>
-
-<section class="section bg-light" id="especialistas">
-    <div class="container">
-        <h2 class="section-title">Visão Técnica e Apoio Científico</h2>
-        <div class="grid-3">
-            <div class="card-expert">
-                <div class="icon">👨‍🌾</div>
-                <h3>Agrônomos</h3>
-                <p>Validação de boas práticas agrícolas e manejo correto de solo e culturas.</p>
-            </div>
-            <div class="card-expert">
-                <div class="icon">🚜</div>
-                <h3>Técnicos Agrícolas</h3>
-                <p>Dados de campo e acompanhamento direto das safras e do pequeno produtor.</p>
-            </div>
-            <div class="card-expert">
-                <div class="icon">🔬</div>
-                <h3>Pesquisa Oficial</h3>
-                <p>Artigos e notas técnicas da Embrapa, CONAB, INPE, IBGE e EMATER.</p>
+                <img src="https://images.unsplash.com/photo-1586201375761-83865001e31c?w=400" alt="Grãos de Arroz" class="card-img">
+                <h3>🌾 Estoques e Abastecimento</h3>
+                <p>O monitoramento contínuo das safras evita corridas artificiais aos mercados geradas por boatos de pânico.</p>
             </div>
         </div>
     </div>
-</section>
-
-<section class="section" id="ficha">
-    <div class="container">
-        <h2 class="section-title">Ficha Técnica do Projeto</h2>
-        <div class="tech-table-wrapper">
-            <table class="tech-table">
-                <tr>
-                    <th>Nome</th>
-                    <td>AgroVerídico (Maratona Tech)</td>
-                </tr>
-                <tr>
-                    <th>Tecnologia</th>
-                    <td>Buscador Universal com Filtragem por Intenção Algorítmica</td>
-                </tr>
-                <tr>
-                    <th>Escopo</th>
-                    <td>Nacional — Integração de dados públicos e educação digital urbana</td>
-                </tr>
-            </table>
-        </div>
-    </div>
-
-
 </section>
 
 <footer class="footer">
     <div class="container">
-        <p>AgroVerídico — Plataforma de Integridade da Informação do Agronegócio Brasileiro.</p>
-        <p>Desenvolvido para a Maratona Tech. Conformidade total com a LGPD.</p>
+        <p>AgroVerídico AI — Conectando a ciência agrária à verdade da informação.</p>
+        <p>Projeto desenvolvido para a Maratona Tech. Conformidade total com a LGPD.</p>
     </div>
 </footer>
 
