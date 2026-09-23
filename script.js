@@ -65,146 +65,17 @@ const baseConhecimentoEspecializada = {
     }
 };
 
-let curtidasAtuais = 0;
-let jaCurtiu = false;
-
-// Função do Botão de Curtir
-function curtirResposta() {
-    const likeBtn = document.getElementById('likeBtn');
-    const likeCountSpan = document.getElementById('likeCount');
-    const likeText = document.getElementById('likeText');
-
-    if (!jaCurtiu) {
-        curtidasAtuais++;
-        jaCurtiu = true;
-        likeBtn.classList.add('liked');
-        likeText.innerText = "Você curtiu isto!";
+const botao = document.getElementById('meuBotao');
+const mensagem = document.getElementById('mensagem');
+botao.addEventListener('click', function() {
+    if (mensagem.classList.contains('escondido')) {
+        mensagem.classList.remove('escondido');
+        mensagem.classList.add('mostrar');
+        botao.innerText = 'Fechar Mensagem';
     } else {
-        curtidasAtuais--;
-        jaCurtiu = false;
-        likeBtn.classList.remove('liked');
-        likeText.innerText = "Curtir esta análise";
-    }
-    likeCountSpan.innerText = curtidasAtuais;
-}
-
-// Alternar entre Modo Claro e Escuro
-function alternarTema() {
-    const body = document.body;
-    const btn = document.getElementById('themeToggle');
-    
-    body.classList.toggle('dark-mode');
-    const isDark = body.classList.contains('dark-mode');
-
-    btn.innerText = isDark ? "☀️ Modo Claro" : "🌙 Modo Escuro";
-    localStorage.setItem('agroTema', isDark ? 'dark' : 'light');
-}
-
-// Carregar Tema Salvo nas Preferências
-document.addEventListener("DOMContentLoaded", () => {
-    const temaSalvo = localStorage.getItem('agroTema');
-    if (temaSalvo === 'dark') {
-        document.body.classList.add('dark-mode');
-        document.getElementById('themeToggle').innerText = "☀️ Modo Claro";
+        mensagem.classList.remove('mostrar');
+        mensagem.classList.add('escondido');
+        botao.innerText = 'Clique Aqui';
     }
 });
 
-// Execução da Checagem IA
-function executarChecagemIA() {
-    const input = document.getElementById('searchInput');
-    const prompt = input.value.trim();
-    if (!prompt) return alert("Digite sua dúvida para checagem.");
-
-    const loader = document.getElementById('aiLoader');
-    const card = document.getElementById('aiResultCard');
-
-    card.style.display = 'none';
-    loader.style.display = 'block';
-
-    setTimeout(() => {
-        finalizarRespostaIA(prompt);
-    }, 600);
-}
-
-function finalizarRespostaIA(prompt) {
-    const loader = document.getElementById('aiLoader');
-    const card = document.getElementById('aiResultCard');
-    const p = prompt.toLowerCase();
-
-    let resultado = null;
-
-    for (let chave in baseConhecimentoEspecializada) {
-        if (p.includes(chave)) {
-            resultado = baseConhecimentoEspecializada[chave];
-            break;
-        }
-    }
-
-    if (!resultado) {
-        resultado = {
-            selo: "ANÁLISE CIENTÍFICA",
-            classe: "ciencia",
-            confianca: "96.5%",
-            titulo: `Análise sobre: "${prompt}"`,
-            imagem: "https://images.unsplash.com/photo-1530836369250-ef72a3f5cda8?w=800",
-            resumo: `A checagem automatizada processou os dados sobre "${prompt}" com base nos protocolos agrícolas brasileiros.`,
-            analise: `Em relação ao tema consultado, o setor agropecuário brasileiro atua sob regulamentações estritas. A propagação de conteúdos não checados costuma descontextualizar os processos reais de campo.`,
-            evidencias: [
-                "A produção segue diretrizes da Embrapa e normas sanitárias federais.",
-                "Fiscalizações periódicas inspecionam a qualidade nas centrais de distribuição.",
-                "Consulte sempre canais oficiais do Ministério da Agricultura para validação."
-            ],
-            orientacao: "Valide as informações em sites institucionais antes de compartilhar em redes sociais.",
-            fontes: "Embrapa, CONAB e Ministério da Agricultura."
-        };
-    }
-
-    // Atualização dos elementos do DOM
-    document.getElementById('badgeSelo').innerText = resultado.selo;
-    document.getElementById('badgeSelo').className = 'badge ' + resultado.classe;
-    document.getElementById('trustScore').innerText = 'Confiabilidade: ' + resultado.confianca;
-    document.getElementById('aiTitle').innerText = resultado.titulo;
-    document.getElementById('aiSummary').innerText = resultado.resumo;
-    document.getElementById('aiDeepAnalysis').innerHTML = resultado.analise;
-
-    // Imagem
-    const imgElement = document.getElementById('aiResultImage');
-    if (resultado.imagem) {
-        imgElement.src = resultado.imagem;
-        imgElement.style.display = 'inline-block';
-    } else {
-        imgElement.style.display = 'none';
-    }
-
-    // Evidências
-    const listContainer = document.getElementById('aiEvidenceList');
-    listContainer.innerHTML = '';
-    resultado.evidencias.forEach(item => {
-        const li = document.createElement('li');
-        li.innerHTML = item;
-        listContainer.appendChild(li);
-    });
-
-    document.getElementById('aiActionGuidance').innerText = resultado.orientacao;
-    document.getElementById('aiSources').innerText = resultado.fontes;
-
-    // Reset do Botão de Curtir para nova checagem
-    curtidasAtuais = Math.floor(Math.random() * 45) + 12; // Valor inicial simulado
-    jaCurtiu = false;
-    const likeBtn = document.getElementById('likeBtn');
-    likeBtn.classList.remove('liked');
-    document.getElementById('likeText').innerText = "Curtir esta análise";
-    document.getElementById('likeCount').innerText = curtidasAtuais;
-
-    loader.style.display = 'none';
-    card.style.display = 'block';
-}
-
-function preencherEBuscar(texto) {
-    document.getElementById('searchInput').value = texto;
-    executarChecagemIA();
-}
-
-document.getElementById('searchInput').addEventListener('keypress', (e) => {
-    if (e.key === 'Enter') executarChecagemIA();
-});
