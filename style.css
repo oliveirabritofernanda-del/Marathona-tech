@@ -21,8 +21,8 @@
         .search-box { display: flex; gap: 10px; margin-bottom: 20px; }
         input { flex: 1; padding: 12px; border: 1px solid #ccc; border-radius: 6px; font-size: 14px; }
 
-        button { background-color: #053b23; color: white; border: none; padding: 12px 18px; border-radius: 6px; cursor: pointer; font-weight: bold; }
-        button:hover { background-color: #1b4332; }
+        button { background-color: #0d79b8; color: white; border: none; padding: 12px 18px; border-radius: 6px; cursor: pointer; font-weight: bold; }
+        button:hover { background-color: #17abd8; }
 
         .result { display: none; padding: 15px; border-radius: 8px; margin-top: 15px; }
 
