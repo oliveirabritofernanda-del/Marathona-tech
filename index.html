@@ -3,158 +3,186 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>AgroVerídico AI - Combate às Fake News no Agro</title>
-    <!-- Vinculação do CSS externo -->
+    <title>AgroVerídico AI - Checagem Científica do Agro</title>
     <link rel="stylesheet" href="style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&display=swap" rel="stylesheet">
 </head>
 <body>
 
-<header>
-    <div class="container nav-container">
+<header class="navbar">
+    <div class="container nav-content">
         <div class="logo">
-            🌾 AgroVerídico <span class="ai-badge">AI Neural Check v4.0</span>
+            <span class="logo-icon">🌿</span>
+            <div class="logo-text">
+                <strong>AgroVerídico</strong>
+                <span class="sub-logo">Base Científica Embrapa & CONAB</span>
+            </div>
         </div>
-        <nav>
+        <nav class="nav-links">
             <a href="#checagem">Buscador IA</a>
-            <a href="#boatos">Mitos & Fatos</a>
-            <a href="#impactos">Impactos</a>
-            <button class="theme-btn" id="themeToggle" onclick="alternarTema()">🌙 Modo Escuro</button>
+            <a href="#boatos">Fatos e Mitos</a>
+            <a href="#fontes">Fontes Oficiais</a>
+            <button class="theme-toggle-btn" id="themeToggleBtn" onclick="alternarTema()">
+                <span id="themeIcon">🌙</span> <span id="themeText">Modo Escuro</span>
+            </button>
         </nav>
     </div>
 </header>
 
-<section class="hero" id="checagem">
-    <div class="container">
-        <h1>Combate à Desinformação no Agronegócio</h1>
-        <p>Tire suas dúvidas ou verifique se uma notícia é <b>VERDADEIRA</b> ou <b>FALSA</b>. Nossa IA analisa dados oficiais do setor, pesquisas da Embrapa e regulamentações federais.</p>
-
-        <div class="quick-tags">
-            <span>Checagens Rápidas:</span>
-            <button onclick="preencherEBuscar('Produtores jogam comida fora para aumentar os preços?')">🍅 Descarte de Alimentos</button>
-            <button onclick="preencherEBuscar('O agro desmata sem controle para plantar soja e criar gado?')">🌳 Desmatamento & Soja</button>
-            <button onclick="preencherEBuscar('Produtor rural é proibido de usar chapéu de palha no trabalho?')">🧢 Chapéu & Leis do Campo</button>
-            <button onclick="preencherEBuscar('Existe risco real de faltar arroz nos supermercados?')">🌾 Falta de Arroz</button>
-        </div>
-
-        <div class="search-card">
-            <div class="search-box">
-                <input type="text" id="searchInput" placeholder="Cole uma notícia ou pergunte qualquer coisa sobre o agro..." />
-                <button onclick="executarChecagemIA()">Analisar com IA</button>
+<main>
+    <!-- HERO SECTION -->
+    <section class="hero" id="checagem">
+        <div class="container hero-container">
+            <div class="hero-header">
+                <span class="badge-tag">Plataforma Neutra de Checagem</span>
+                <h1>Verificação Científica para o Agronegócio</h1>
+                <p>Verifique notícias, boatos e informações sobre produção agrícola com dados cruzados diretamente da Embrapa, CONAB, IBGE e Ministério da Agricultura.</p>
             </div>
 
-            <!-- Loader de Processamento -->
-            <div id="aiLoader" class="ai-loader" style="display: none;">
-                <div class="pulse-ring"></div>
-                <p>Cruzando dados com Embrapa, CONAB, IBGE e Ministério da Agricultura...</p>
-            </div>
-
-            <!-- Card de Resposta da IA -->
-            <div id="aiResultCard" class="ai-result-card" style="display: none;">
-                <div class="result-header">
-                    <span id="badgeSelo" class="badge"></span>
-                    <span id="trustScore" class="trust-score"></span>
+            <!-- BUSCADOR -->
+            <div class="search-card">
+                <div class="search-bar-wrapper">
+                    <input type="text" id="searchInput" placeholder="Cole uma notícia ou pergunte (ex: 'descarte de tomates', 'desmatamento e soja')..." />
+                    <button class="btn-primary" onclick="executarChecagemIA()">Analisar Fato</button>
                 </div>
 
-                <h2 id="aiTitle"></h2>
-
-                <div class="section-block">
-                    <h4>📌 Resumo Executivo da Checagem</h4>
-                    <p id="aiSummary"></p>
+                <div class="quick-tags">
+                    <small>Exemplos frequentes:</small>
+                    <button onclick="preencherEBuscar('tomate')">🍅 Descarte de Tomates</button>
+                    <button onclick="preencherEBuscar('desmat')">🌳 Poupa-Terra & Soja</button>
+                    <button onclick="preencherEBuscar('chapeu')">🧢 Chapéu no Campo</button>
+                    <button onclick="preencherEBuscar('arroz')">🌾 Escassez de Arroz</button>
                 </div>
 
-                <div class="section-block">
-                    <h4>🔍 Análise Técnica e Científica</h4>
-                    <div id="aiDeepAnalysis"></div>
+                <!-- LOADER DE PROCESSAMENTO -->
+                <div id="aiLoader" class="ai-loader" style="display: none;">
+                    <div class="spinner"></div>
+                    <p>Cruzando dados com repositórios científicos e dados governamentais...</p>
                 </div>
 
-                <div class="section-block">
-                    <h4>🌾 Evidências e Fatos Oficiais</h4>
-                    <ul id="aiEvidenceList"></ul>
+                <!-- CARD DE RESPOSTA DA IA -->
+                <div id="aiResultCard" class="ai-result-card" style="display: none;">
+                    <div class="result-top">
+                        <span id="badgeSelo" class="badge-selo"></span>
+                        <span id="trustScore" class="trust-score"></span>
+                    </div>
+
+                    <div class="result-body">
+                        <div class="result-image-box">
+                            <img id="aiResultImg" src="" alt="Imagem Ilustrativa da Checagem" onerror="this.src='https://images.unsplash.com/photo-1500937386664-56d1dfef3854?auto=format&fit=crop&w=800&q=80'" />
+                        </div>
+
+                        <div class="result-details">
+                            <h2 id="aiTitle"></h2>
+
+                            <div class="info-block">
+                                <h3>📌 Resumo Científico</h3>
+                                <p id="aiSummary"></p>
+                            </div>
+
+                            <div class="info-block">
+                                <h3>🔍 Análise Técnica</h3>
+                                <div id="aiDeepAnalysis"></div>
+                            </div>
+
+                            <div class="info-block">
+                                <h3>📊 Fatos e Evidências</h3>
+                                <ul id="aiEvidenceList"></ul>
+                            </div>
+
+                            <div class="info-block highlight-box">
+                                <h3>💡 Como agir frente a essa informação</h3>
+                                <p id="aiActionGuidance"></p>
+                            </div>
+
+                            <div class="card-footer-actions">
+                                <button id="likeBtn" class="btn-like" onclick="alternarCurtida()">
+                                    <span id="likeHeart">🤍</span> <span id="likeText">Útil para mim</span> (<span id="likeCount">0</span>)
+                                </button>
+                                <div class="sources-box">
+                                    <strong>Fontes Consultadas:</strong> <span id="aiSources"></span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
                 </div>
-
-                <div class="section-block highlight-block">
-                    <h4>💡 Orientação ao Cidadão e Produtor</h4>
-                    <p id="aiActionGuidance"></p>
-                </div>
-
-                <div class="card-action-bar">
-                    <button id="likeBtn" class="like-btn" onclick="curtirResposta()">
-                        ❤️ <span id="likeText">Útil para mim</span> (<span id="likeCount">0</span>)
-                    </button>
-                </div>
-
-                <div class="card-footer">
-                    <div><strong>Fontes Cruzadas:</strong> <span id="aiSources"></span></div>
-                    <div>🔒 Checagem Isenta Protegida por LGPD</div>
-                </div>
-            </div>
-        </div>
-    </div>
-</section>
-
-<!-- Seção Mitos e Fatos do Agro -->
-<section class="section" id="boatos">
-    <div class="container">
-        <h2 class="section-title">Principais Fake News Desmentidas</h2>
-        <p class="section-sub">Entenda a verdade por trás dos boatos que mais viralizam nas redes sociais sobre a produção agrícola no Brasil:</p>
-
-        <div class="grid-cards">
-            <div class="card-info">
-                <h3>🍅 Descarte Proposital de Comida</h3>
-                <p><b>Fato:</b> Vídeos antigos ou fora de contexto alegam que agricultores destroem lavouras para subir preços. Na realidade, descartes pontuais ocorrem por falhas de frete, falta de transporte ou quebras abruptas de mercado que inviabilizam o colhimento.</p>
-            </div>
-
-            <div class="card-info">
-                <h3>🌳 Expansão Desenfreada</h3>
-                <p><b>Fato:</b> Narrativas ignoram o efeito "poupa-terra". A tecnologia e o manejo sustentável permitiram ao Brasil aumentar vertiginosamente a produção por hectare em áreas já consolidadas, sem necessidade de desmatar novas áreas.</p>
-            </div>
-
-            <div class="card-info">
-                <h3>🧢 Proibições e Burocracia Inventada</h3>
-                <p><b>Fato:</b> Mensagens falsas afirmam que produtores seriam proibidos de usar chapéu ou precisariam de licenças complexas para plantar árvores exóticas como eucalipto. Nenhuma norma trabalhista proíbe equipamentos de proteção tradicional.</p>
-            </div>
-
-            <div class="card-info">
-                <h3>🌾 Risco de Desabastecimento</h3>
-                <p><b>Fato:</b> Boatos alarmistas sobre escassez iminente de grãos (como o arroz) criam pânico e corridas desnecessárias aos mercados, gerando picos temporários de preço causados pela própria corrida do consumidor.</p>
             </div>
         </div>
-    </div>
-</section>
+    </section>
 
-<!-- Seção Impactos da Desinformação -->
-<section class="section impacts-section" id="impactos">
-    <div class="container">
-        <h2 class="section-title">Impactos Danosos da Desinformação</h2>
-        <p class="section-sub">A propagação irresponsável de notícias falsas afeta desde a mesa do consumidor até o comércio global:</p>
-
-        <div class="grid-cards">
-            <div class="card-info card-impact">
-                <h3>💸 Prejuízos e Pânico Econômico</h3>
-                <p>Flutuações artificiais de preços e decisões precipitadas de compra por consumidores alarmados e produtores enganados por informações inverídicas.</p>
+    <!-- GALERIA DE MITOS CHECADOS -->
+    <section class="section-padding" id="boatos">
+        <div class="container">
+            <div class="section-header">
+                <h2>Fatos vs. Mitos Frequentes</h2>
+                <p>Confira análises já consolidadas por institutos de pesquisa agronômica:</p>
             </div>
 
-            <div class="card-info card-impact">
-                <h3>🌍 Danos à Imagem Internacional</h3>
-                <p>Prejuízo à reputação de sustentabilidade da cadeia produtiva brasileira frente aos compradores internacionais de grãos e proteína animal.</p>
-            </div>
+            <div class="cards-grid">
+                <article class="card-item">
+                    <div class="card-media">
+                        <img src="https://images.unsplash.com/photo-1592924357228-91a4daadcfea?auto=format&fit=crop&w=600&q=80" alt="Tomates" onerror="this.src='https://images.unsplash.com/photo-1500937386664-56d1dfef3854?auto=format&fit=crop&w=600&q=80'">
+                        <span class="tag-status status-falso">FALSO</span>
+                    </div>
+                    <div class="card-content">
+                        <h3>Destruição Intencional de Hortaliças</h3>
+                        <p>Produtores não descartam alimentos para inflar preços. Trata-se de gargalos pontuais de frete, perecibilidade imediata e oscilações do mercado atacadista.</p>
+                        <button class="btn-secondary" onclick="preencherEBuscar('tomate')">Ver Checagem Completa</button>
+                    </div>
+                </article>
 
-            <div class="card-info card-impact">
-                <h3>🗣️ Confusão na Opinião Pública</h3>
-                <p>Afastamento do consumidor urbano da realidade do campo, gerando desconfiança injustificada sobre a qualidade dos alimentos consumidos.</p>
+                <article class="card-item">
+                    <div class="card-media">
+                        <img src="https://images.unsplash.com/photo-1574943320219-553eb213f72d?auto=format&fit=crop&w=600&q=80" alt="Plantação de Soja" onerror="this.src='https://images.unsplash.com/photo-1500937386664-56d1dfef3854?auto=format&fit=crop&w=600&q=80'">
+                        <span class="tag-status status-contexto">FORA DE CONTEXTO</span>
+                    </div>
+                    <div class="card-content">
+                        <h3>Crescimento Agrícola e Desmatamento</h3>
+                        <p>O aumento da produção de grãos no Brasil ocorre predominantemente pelo Efeito Poupa-Terra (produtividade por hectare) e recuperação de pastagens antigas.</p>
+                        <button class="btn-secondary" onclick="preencherEBuscar('desmat')">Ver Checagem Completa</button>
+                    </div>
+                </article>
+
+                <article class="card-item">
+                    <div class="card-media">
+                        <img src="https://images.unsplash.com/photo-1586771107445-d3ca888129ff?auto=format&fit=crop&w=600&q=80" alt="Trabalhador Rural" onerror="this.src='https://images.unsplash.com/photo-1500937386664-56d1dfef3854?auto=format&fit=crop&w=600&q=80'">
+                        <span class="tag-status status-falso">FALSO</span>
+                    </div>
+                    <div class="card-content">
+                        <h3>Proibição de Chapéu e Trajes Tradicionais</h3>
+                        <p>Normas como a NR-31 exigem a proteção solar no campo. Boatos sobre a proibição de chapéus de palha são falsos e desprovidos de base legal.</p>
+                        <button class="btn-secondary" onclick="preencherEBuscar('chapeu')">Ver Checagem Completa</button>
+                    </div>
+                </article>
             </div>
         </div>
-    </div>
-</section>
+    </section>
+
+    <!-- BANNER FONTES OFICIAIS -->
+    <section class="section-sources" id="fontes">
+        <div class="container text-center">
+            <h2>Compromisso com a Ciência Agrófila</h2>
+            <p>Nossas análises são baseadas exclusivamente em repositórios abertos de dados governamentais e instituições de pesquisa científica reconhecidas internacionalmente.</p>
+            <div class="logos-strip">
+                <span class="source-badge">🌿 Embrapa</span>
+                <span class="source-badge">📦 CONAB</span>
+                <span class="source-badge">📈 IBGE</span>
+                <span class="source-badge">🏛️ Ministério da Agricultura</span>
+                <span class="source-badge">🛰️ INPE / MAPBIOMAS</span>
+            </div>
+        </div>
+    </section>
+</main>
 
 <footer>
-    <div class="container">
-        <p><b>AgroVerídico AI</b> — Conectando a ciência agrária e dados oficiais à verdade da informação.</p>
-        <p>Plataforma educativa desenvolvida em conformidade total com a LGPD.</p>
+    <div class="container footer-content">
+        <p><strong>AgroVerídico AI</strong> &copy; 2026 — Informação Aberta e Verificável sobre o Agronegócio.</p>
+        <p><small>Desenvolvido de acordo com as diretrizes da LGPD. Sem rastreamento de dados pessoais.</small></p>
     </div>
 </footer>
 
-<!-- Chamada do arquivo JavaScript externo -->
 <script src="script.js"></script>
 </body>
 </html>

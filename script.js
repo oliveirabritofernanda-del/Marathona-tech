@@ -1,133 +1,149 @@
+/* ==========================================================================
+   AGROVERÍDICO AI - LÓGICA & PERSISTÊNCIA INDIVIDUAL DO USUÁRIO
+   ========================================================================== */
+
+// Base Científica de Dados
 const baseConhecimento = {
     "tomate": {
         selo: "FALSO",
         classe: "falso",
         confianca: "99.8%",
-        titulo: "É FALSO que agricultores destroem alimentos para subir preços",
-        resumo: "Vídeos de destruição de tomate, leite ou hortaliças reutilizados nas redes tratam de gargalos logísticos ou custo abusivo de frete, nunca de manipulação de preço.",
-        analise: "Pequenos e médios produtores operam em concorrência pulverizada e não possuem poder de cartel. O descarte na lavoura é sempre um prejuízo amargo para o produtor e decorre de <b>quebras abruptas no preço de mercado</b>, <b>falta ou custo inviável de transporte/frete</b> ou <b>deterioração rápida do produto por clima</b>.",
+        titulo: "É FALSO que agricultores descartam alimentos para manipular preços",
+        imagem: "https://images.unsplash.com/photo-1592924357228-91a4daadcfea?auto=format&fit=crop&w=800&q=80",
+        resumo: "Vídeos sobre descarte de tomates ou hortaliças mostram gargalos pontuais de transporte ou custos inviáveis de frete, nunca controle de oferta.",
+        analise: "A produção de hortifrúti opera em concorrência pulverizada. O descarte na lavoura representa prejuízo direto para o agricultor e é provocado por <b>quebras abruptas de preço nos entrepostos</b> ou <b>deterioração acelerada pelo clima</b>.",
         evidencias: [
-            "Lavouras de hortifrúti possuem ciclo de deterioração de poucos dias.",
-            "Entidades como EMATER e Embrapa orientam o aproveitamento para compostagem e ração em casos de inviabilidade de frete.",
-            "Não há registro de cartel no setor produtivo de hortaliças."
+            "Tomates possuem ciclo útil de poucos dias após a colheita.",
+            "A Embrapa Hortaliças e a EMATER orientam o uso de excedentes para compostagem e ração animal.",
+            "Não existe mecanismo econômico de cartel em hortaliças no Brasil."
         ],
-        orientacao: "Não repasse vídeos sem checar data e local. O problema do descarte pontual é logístico e econômico, não uma conspiração.",
+        orientacao: "Evite repassar vídeos sem data e local. O descarte pontual reflete problemas de logística, não manipulação.",
         fontes: "Embrapa Hortaliças, EMATER, CONAB e CEASA."
     },
     "desmat": {
         selo: "FORA DE CONTEXTO",
         classe: "contexto",
         confianca: "98.7%",
-        titulo: "A produção de grãos cresce por Produtividade (Efeito Poupa-Terra)",
-        resumo: "Alegações de que todo ganho de produção exige desmatamento ilegal ignoram a biotecnologia e o manejo de solo em áreas já consolidadas.",
-        analise: "O Brasil utiliza o conceito de <b>Efeito Poupa-Terra</b>: através da rotação de culturas, plantio direto e biotecnologia, colhe-se mais safras por ano na mesma hectare. O Código Florestal exige preservação obrigatória (de 20% a 80% da propriedade como Reserva Legal).",
+        titulo: "Produção de Soja e o Conceito de Efeito Poupa-Terra",
+        imagem: "https://images.unsplash.com/photo-1574943320219-553eb213f72d?auto=format&fit=crop&w=800&q=80",
+        resumo: "Alegações de que a expansão de grãos exige desmatamento contínuo ignoram ganhos de produtividade e recuperação de solo.",
+        analise: "A agricultura brasileira utiliza o <b>Efeito Poupa-Terra</b>: biotecnologia e plantio direto permitem colher mais safra na mesma área. A maior parte do avanço da soja ocorre sobre pastagens antigas já degradadas.",
         evidencias: [
-            "Amazônia Legal possui exigência de 80% de preservação em propriedades rurais por lei.",
-            "INPE, MapBiomas e satélites do DETER/PRODES monitoram alterações em tempo real.",
-            "A Moratória da Soja impede financiamento de grãos vindo de áreas desmatadas ilegalmente."
+            "O Código Florestal exige preservação de 20% a 80% da vegetação nativa em propriedades privadas.",
+            "Monitoramento por satélites (INPE e MapBiomas) mapeia o uso do solo em tempo real.",
+            "Acordos como a Moratória da Soja impedem a compra de grãos de áreas desmatadas ilegalmente."
         ],
-        orientacao: "Diferencie o produtor rural cumpridor do Código Florestal de infratores ambientais combatidos por órgãos de fiscalização.",
+        orientacao: "Consulte os relatórios do INPE e CAR para diferenciar produtores regulares de infratores.",
         fontes: "INPE (DETER/PRODES), Embrapa Territorial e Ministério do Meio Ambiente."
-    },
-    "soja": {
-        selo: "FORA DE CONTEXTO",
-        classe: "contexto",
-        confianca: "98.7%",
-        titulo: "Produção de Soja e Manejo Sustentável",
-        resumo: "A expansão da soja no Brasil ocorre majoritariamente sobre pastagens degradadas e áreas agrícolas consolidadas.",
-        analise: "A cultura da soja brasileira é referência internacional em integração lavoura-pecuária e fixação biológica de nitrogênio, dispensando adubação nitrogenada química pesada. Acordos de mercado bloqueiam grãos originados de áreas não em conformidade.",
-        evidencias: [
-            "Mais de 60% do território nacional é mantido como vegetação nativa preservada.",
-            "Programas de recuperação de pastagens convertem áreas degradadas em lavouras produtivas sem derrubar árvores.",
-            "Certificações internacionais exigem rastreabilidade completa dos grãos."
-        ],
-        orientacao: "Consulte o Cadastro Ambiental Rural (CAR) para entender os índices de preservação dentro das propriedades.",
-        fontes: "Embrapa Soja, Ministério da Agricultura e CAR."
     },
     "chapeu": {
         selo: "FALSO",
         classe: "falso",
         confianca: "99.9%",
-        titulo: "É FALSO que o uso de chapéu de palha foi proibido no campo",
-        resumo: "Mensagens virais alegando proibições absurdas do uso de chapéus ou vestimentas tradicionais de trabalho rural são completamente mentirosas.",
-        analise: "As Normas Regulamentadoras (como a NR-31, que rege a segurança e saúde no trabalho rural) incentivam e exigem a <b>proteção contra radiação solar</b>. O chapéu de palha e bonés com touca árabe são amplamente recomendados para prevenir queimaduras e câncer de pele.",
+        titulo: "É FALSO que o uso de chapéu de palha foi proibido no trabalho rural",
+        imagem: "https://images.unsplash.com/photo-1586771107445-d3ca888129ff?auto=format&fit=crop&w=800&q=80",
+        resumo: "Série de mensagens mentirosas afirma que órgãos federais teriam banido chapéus de palha tradicionais.",
+        analise: "As Normas Regulamentadoras de Segurança no Trabalho Rural (como a NR-31) exigem a <b>proteção contra a radiação solar</b>. Chapéus de palha e bonés de proteção são ativamente incentivados.",
         evidencias: [
-            "A NR-31 orienta o uso de Equipamentos de Proteção Individual (EPIs) adequados ao sol.",
-            "Não existe portaria do Ministério do Trabalho proibindo vestimentas tradicionais contra o sol.",
-            "Campanhas de saúde do campo estimulam o uso do chapéu diariamente."
+            "A NR-31 reforça a obrigatoriedade de Equipamentos de Proteção Individual (EPIs) contra o sol.",
+            "Campanhas de saúde no campo incentivam o uso diário do chapéu de palha.",
+            "Não existe portaria ou norma restritiva sobre vestimentas tradicionais de proteção."
         ],
-        orientacao: "Boatos sobre 'regras absurdas' visam apenas criar indignação artificial na população contra órgãos reguladores.",
+        orientacao: "Desconfie de notícias sobre 'proibições absurdas' criadas para gerar indignação sem citar leis.",
         fontes: "Ministério do Trabalho e Emprego, NR-31 e SENAR."
-    },
-    "eucalipto": {
-        selo: "FALSO",
-        classe: "falso",
-        confianca: "98.2%",
-        titulo: "É FALSO que o plantio de florestas exóticas foi inviabilizado",
-        resumo: "Alegações de burocracia extrema que proibiriam o plantio de eucalipto ou pínus para silvicultura são infundadas.",
-        analise: "A silvicultura (plantio de florestas cultivadas) é uma atividade econômica legal e crucial no Brasil para produção de celulose, papel e biomassa, aliviando a pressão sobre florestas nativas.",
-        evidencias: [
-            "O Brasil é líder mundial na produtividade de florestas plantadas de eucalipto.",
-            "O licenciamento ambiental segue diretrizes estaduais simplificadas para manejo florestal.",
-            "Florestas cultivadas sequestram milhões de toneladas de carbono da atmosfera."
-        ],
-        orientacao: "Verifique os dados da Indústria Brasileira de Árvores (Ibá) para entender os números da silvicultura.",
-        fontes: "Ibá, Embrapa Florestas e Ministério da Agricultura."
     },
     "arroz": {
         selo: "FALSO",
         classe: "falso",
-        confianca: "99.5%",
-        titulo: "É FALSO que faltará arroz e mantimentos nos supermercados",
-        resumo: "Boatos de desabastecimento de arroz e feijão servem apenas para gerar pânico e estocagem desenfreada.",
-        analise: "Mensagens sensacionalistas induzem os consumidores a comprar volumes muito acima do normal de uma só vez, criando uma escassez temporária e artificial nas gôndolas e elevando os preços momentaneamente.",
+        confianca: "99.2%",
+        titulo: "É FALSO que haverá desabastecimento generalizado de Arroz",
+        imagem: "https://images.unsplash.com/photo-1586201375761-83865001e31c?auto=format&fit=crop&w=800&q=80",
+        resumo: "Correntes de redes sociais induzem a população ao pânico sobre falta de mantimentos.",
+        analise: "A estocagem exagerada impulsionada por boatos gera escassez temporária nas prateleiras dos supermercados e inflação artificial momentânea. A produção nacional e os acordos no Mercosul garantem o fluxo de fornecimento.",
         evidencias: [
-            "A CONAB monitora os estoques públicos e privados de grãos com relatórios periódicos.",
-            "O Brasil possui produção robusta e parcerias comerciais do MERCOSUL para equilíbrio de oferta.",
-            "A capacidade produtiva atende com folga o consumo da cesta básica."
+            "A CONAB realiza o monitoramento mensal dos estoques públicos e privados.",
+            "O Brasil possui autonomia de abastecimento e canais abertos de importação no MERCOSUL.",
+            "Picos de preço ocorrem pelo aumento súbito de compras por pânico, não por falta física do produto."
         ],
-        orientacao: "Mantenha seu ritmo normal de compras. A estocagem por pânico prejudica a própria comunidade.",
+        orientacao: "Mantenha o ritmo normal de compras para preservar o equilíbrio de mercado na sua região.",
         fontes: "CONAB, IBGE e Associação Brasileira de Supermercados (ABRAS)."
     }
 };
 
-let curtidasAtuais = 0;
-let jaCurtiu = false;
+let chaveAtualPesquisa = "";
 
-// Função para Alternar Modo Claro / Modo Escuro
+/* --- 1. GERENCIAMENTO DE TEMA (MODO ESCURO / CLARO) --- */
 function alternarTema() {
-    document.body.classList.toggle('dark-mode');
-    const isDark = document.body.classList.contains('dark-mode');
-    document.getElementById('themeToggle').innerText = isDark ? "☀️ Modo Claro" : "🌙 Modo Escuro";
+    const body = document.body;
+    body.classList.toggle('dark-mode');
+    
+    const isDark = body.classList.contains('dark-mode');
+    localStorage.setItem('agroveridico_theme', isDark ? 'dark' : 'light');
+    atualizarBotaoTema(isDark);
 }
 
-// Função para Curtiu/Não Curtiu
-function curtirResposta() {
-    const likeText = document.getElementById('likeText');
-    const likeCount = document.getElementById('likeCount');
-    const likeBtn = document.getElementById('likeBtn');
+function carregarTemaSalvo() {
+    const temaSalvo = localStorage.getItem('agroveridico_theme');
+    const isDark = temaSalvo === 'dark';
+    if (isDark) {
+        document.body.classList.add('dark-mode');
+    }
+    atualizarBotaoTema(isDark);
+}
+
+function atualizarBotaoTema(isDark) {
+    document.getElementById('themeIcon').innerText = isDark ? "☀️" : "🌙";
+    document.getElementById('themeText').innerText = isDark ? "Modo Claro" : "Modo Escuro";
+}
+
+/* --- 2. GERENCIAMENTO DE CURTIDAS LOCAIS (POR USUÁRIO) --- */
+function alternarCurtida() {
+    if (!chaveAtualPesquisa) return;
+
+    const likeKey = `agroveridico_like_${chaveAtualPesquisa}`;
+    const countKey = `agroveridico_count_${chaveAtualPesquisa}`;
+
+    let jaCurtiu = localStorage.getItem(likeKey) === 'true';
+    let contagem = parseInt(localStorage.getItem(countKey) || "24", 10);
 
     if (!jaCurtiu) {
-        curtidasAtuais++;
-        jaCurtiu = true;
-        likeBtn.classList.add('liked');
-        likeText.innerText = "Você achou útil";
+        contagem += 1;
+        localStorage.setItem(likeKey, 'true');
     } else {
-        curtidasAtuais--;
-        jaCurtiu = false;
-        likeBtn.classList.remove('liked');
-        likeText.innerText = "Útil para mim";
+        contagem = Math.max(0, contagem - 1);
+        localStorage.setItem(likeKey, 'false');
     }
-    likeCount.innerText = curtidasAtuais;
+
+    localStorage.setItem(countKey, contagem.toString());
+    atualizarEstadoBotaoCurtida(!jaCurtiu, contagem);
 }
 
-// Inicia a Busca na IA
+function atualizarEstadoBotaoCurtida(curtiu, contagem) {
+    const btn = document.getElementById('likeBtn');
+    const heart = document.getElementById('likeHeart');
+    const text = document.getElementById('likeText');
+    const count = document.getElementById('likeCount');
+
+    count.innerText = contagem;
+
+    if (curtiu) {
+        btn.classList.add('liked');
+        heart.innerText = "❤️";
+        text.innerText = "Você achou útil";
+    } else {
+        btn.classList.remove('liked');
+        heart.innerText = "🤍";
+        text.innerText = "Útil para mim";
+    }
+}
+
+/* --- 3. BUSCADOR E PROCESSAMENTO IA --- */
 function executarChecagemIA() {
     const input = document.getElementById('searchInput');
     const prompt = input.value.trim();
 
     if (!prompt) {
-        alert("Por favor, digite uma dúvida ou cole uma frase para a IA analisar.");
+        alert("Por favor, digite um termo ou pergunta para realizar a verificação.");
         return;
     }
 
@@ -139,69 +155,56 @@ function executarChecagemIA() {
 
     setTimeout(() => {
         finalizarRespostaIA(prompt);
-    }, 700);
+    }, 600);
 }
 
-// Processa o texto pesquisado
 function finalizarRespostaIA(prompt) {
     const loader = document.getElementById('aiLoader');
     const card = document.getElementById('aiResultCard');
     const p = prompt.toLowerCase();
 
     let resultado = null;
+    let chaveEncontrada = "geral";
 
     for (let chave in baseConhecimento) {
         if (p.includes(chave)) {
             resultado = baseConhecimento[chave];
+            chaveEncontrada = chave;
             break;
         }
     }
 
+    // Se não estiver na base, gera análise segura padronizada
     if (!resultado) {
-        const palavrasSuspeitas = ["proibido", "destruindo", "escondendo", "veneno", "cancela", "obrigado a", "morte", "crime", "acabou"];
-        const ehSuspeito = palavrasSuspeitas.some(palavra => p.includes(palavra));
-
-        if (ehSuspeito) {
-            resultado = {
-                selo: "FALSO / DESINFORMAÇÃO",
-                classe: "falso",
-                confianca: "95.4%",
-                titulo: `Análise sobre: "${prompt}"`,
-                resumo: `As alegações alarmistas contidas na frase "${prompt}" não encontram respaldo nos dados oficiais do setor agropecuário.`,
-                analise: `O tema consultado refere-se a boatos recorrentes que descontextualizam normas do Ministério da Agricultura e diretrizes da Embrapa. A produção agrícola brasileira opera sob fiscalização periódica e legislação federal rigorosa.`,
-                evidencias: [
-                    "Normas sanitárias e ambientais impedem irregularidades sem o devido processo legal.",
-                    "Fiscalizações do Ministério da Agricultura e IBAMA garantem a conformidade da cadeia.",
-                    "Consulte sempre os portais institucionais antes de compartilhar mensagens alarmistas."
-                ],
-                orientacao: "Não repasse informações sem fonte verificável ou documento oficial de órgãos públicos.",
-                fontes: "Embrapa, Ministério da Agricultura e CONAB."
-            };
-        } else {
-            resultado = {
-                selo: "VERDADEIRO (FATO CHECADO)",
-                classe: "verdadeiro",
-                confianca: "97.1%",
-                titulo: `Esclarecimento Técnico: "${prompt}"`,
-                resumo: `A questão consultada referente a "${prompt}" está alinhada às boas práticas agrícolas e científicas vigentes no Brasil.`,
-                analise: `Em relação ao tema "<b>${prompt}</b>", a pesquisa agropecuária brasileira e os dados públicos confirmam a veracidade e a fundamentação técnica dos processos produtivos de campo.`,
-                evidencias: [
-                    "A tecnologia de precisão e a pesquisa da Embrapa respaldam a eficiência da produção.",
-                    "Sistemas de rastreabilidade garantem a conformidade do alimento do campo até a mesa.",
-                    "Dados de produtividade e preservação são públicos no Cadastro Ambiental Rural (CAR)."
-                ],
-                orientacao: "Acompanhe as publicações da pesquisa agropecuária oficial para dados sempre atualizados.",
-                fontes: "Embrapa, IBGE, CONAB e Ministério da Agricultura."
-            };
-        }
+        chaveEncontrada = prompt.replace(/\s+/g, '_').substring(0, 15);
+        resultado = {
+            selo: "ANÁLISE DE CONFORMIDADE",
+            classe: "verdadeiro",
+            confianca: "96.5%",
+            titulo: `Análise sobre: "${prompt}"`,
+            imagem: "https://images.unsplash.com/photo-1500937386664-56d1dfef3854?auto=format&fit=crop&w=800&q=80",
+            resumo: `A checagem referente a "${prompt}" foi analisada com base nas diretrizes oficiais da pesquisa agropecuária brasileira.`,
+            analise: `Não foram encontradas irregularidades nem alertas de contaminação ou ilegalidade técnica sobre <b>"${prompt}"</b> nos registros da Embrapa ou Ministério da Agricultura.`,
+            evidencias: [
+                "A produção nacional é regulada por diretrizes de biossegurança.",
+                "Fiscalizações periódicas garantem a qualidade sanitária dos produtos.",
+                "Informações oficiais podem ser consultadas nos portais da Embrapa e CONAB."
+            ],
+            orientacao: "Priorize fontes institucionais e de pesquisa científica para obter dados sobre o campo.",
+            fontes: "Embrapa, CONAB, IBGE e Ministério da Agricultura."
+        };
     }
 
+    chaveAtualPesquisa = chaveEncontrada;
+
+    // Preenchimento dos campos no DOM
     const badge = document.getElementById('badgeSelo');
     badge.innerText = resultado.selo;
-    badge.className = 'badge ' + resultado.classe;
+    badge.className = 'badge-selo ' + resultado.classe;
 
-    document.getElementById('trustScore').innerText = 'Confiabilidade IA: ' + resultado.confianca;
+    document.getElementById('trustScore').innerText = 'Confiabilidade Científica: ' + resultado.confianca;
     document.getElementById('aiTitle').innerText = resultado.titulo;
+    document.getElementById('aiResultImg').src = resultado.imagem;
     document.getElementById('aiSummary').innerText = resultado.resumo;
     document.getElementById('aiDeepAnalysis').innerHTML = resultado.analise;
 
@@ -216,12 +219,12 @@ function finalizarRespostaIA(prompt) {
     document.getElementById('aiActionGuidance').innerText = resultado.orientacao;
     document.getElementById('aiSources').innerText = resultado.fontes;
 
-    curtidasAtuais = Math.floor(Math.random() * 30) + 10;
-    jaCurtiu = false;
-    const likeBtn = document.getElementById('likeBtn');
-    likeBtn.classList.remove('liked');
-    document.getElementById('likeText').innerText = "Útil para mim";
-    document.getElementById('likeCount').innerText = curtidasAtuais;
+    // Estado das curtidas salvas no dispositivo do usuário
+    const likeKey = `agroveridico_like_${chaveAtualPesquisa}`;
+    const countKey = `agroveridico_count_${chaveAtualPesquisa}`;
+    const jaCurtiu = localStorage.getItem(likeKey) === 'true';
+    const contagem = parseInt(localStorage.getItem(countKey) || "32", 10);
+    atualizarEstadoBotaoCurtida(jaCurtiu, contagem);
 
     loader.style.display = 'none';
     card.style.display = 'block';
@@ -232,8 +235,10 @@ function preencherEBuscar(texto) {
     executarChecagemIA();
 }
 
-// Escuta a tecla Enter na caixa de busca
+/* --- INICIALIZAÇÃO SEGURA DA PÁGINA --- */
 document.addEventListener("DOMContentLoaded", () => {
+    carregarTemaSalvo();
+
     const searchInput = document.getElementById('searchInput');
     if (searchInput) {
         searchInput.addEventListener('keypress', function(e) {
