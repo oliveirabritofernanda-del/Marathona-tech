@@ -21,7 +21,7 @@ const baseConhecimento = {
         fontes: "Embrapa Hortaliças, EMATER, CONAB e CEASA."
     },
     "desmat": {
-        selo: "FORA DE CONTEXTO",
+        selo: "Analise",
         classe: "contexto",
         confianca: "98.7%",
         titulo: "Produção de Soja e o Conceito de Efeito Poupa-Terra",
