@@ -1,72 +1,86 @@
-            <span>Exemplos:</span>
-            <button onclick="preencherEBuscar('Produtores jogam tomate fora para subir o preço?')">Tomate e Frete</button>
-            <button onclick="preencherEBuscar('O agro desmata a Amazônia para plantar soja?')">Desmatamento e Soja</button>
-            <button onclick="preencherEBuscar('Agrotóxicos no Brasil causam doenças?')">Segurança dos Defensivos</button>
-            <button onclick="preencherEBuscar('Existe risco de faltar arroz nos supermercados?')">Abastecimento de Arroz</button>
-        </div>
-        
-        <div class="search-card">
-            <div class="search-box">
-                <input type="text" id="searchInput" placeholder="Pergunte qualquer dúvida ou cole uma fake news..." />
-                <button onclick="executarChecagemIA()">Analisar com IA</button>
-            </div>
-            
-            <div id="aiLoader" class="ai-loader">
-                <div class="pulse-ring"></div>
-                <p id="loaderStatus">Iniciando motor neural de checagem...</p>
-            </div>
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>AgroVerídico | Maratona Tech</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <header>
+    <nav class="navbar">
+      <div class="logo">Agro<span>Verídico</span></div>
+      <ul class="nav-links">
+        <li><a href="#problema">O Problema</a></li>
+        <li><a href="#impactos">Impactos</a></li>
+        <li><a href="#checagem">Checador</a></li>
+        <li><a href="#ficha-tecnica">Ficha Técnica</a></li>
+      </ul>
+    </nav>
+  </header>
 
-            <!-- Card de Resposta Completa da IA -->
-            <div id="aiResultCard" class="ai-result-card">
-                <div class="result-header">
-                    <span id="badgeSelo" class="badge"></span>
-                    <span id="trustScore" class="trust-score"></span>
-                </div>
+  <section class="hero">
+    <h1>Combate à Desinformação no Agronegócio</h1>
+    <p>Informação científica e validação técnica para proteger produtores, consumidores e a economia nacional.</p>
+    <a href="#checagem" class="btn">Verificar Notícia</a>
+  </section>
 
-                <h2 id="aiTitle"></h2>
-
-                <!-- Container da Imagem Dinâmica -->
-                <div class="image-container">
-                    <img id="aiResultImage" src="" alt="Imagem ilustrativa do tema" style="display: none;">
-                </div>
-
-                <div class="section-block">
-                    <h4>📌 Resumo Executivo da IA</h4>
-                    <p id="aiSummary"></p>
-                </div>
-
-                <div class="section-block">
-                    <h4>🔍 Análise Técnica e Científica</h4>
-                    <div id="aiDeepAnalysis"></div>
-                </div>
-
-                <div class="section-block">
-                    <h4>🌾 Evidências e Dados Oficiais</h4>
-                    <ul id="aiEvidenceList"></ul>
-                </div>
-
-                <div class="section-block highlight-block">
-                    <h4>💡 Orientação ao Cidadão / Produtor</h4>
-                    <p id="aiActionGuidance"></p>
-                </div>
-
-                <!-- Botão de Curtir e Rodapé -->
-                <div class="card-action-bar">
-                    <button id="likeBtn" class="like-btn" onclick="curtirResposta()">
-                        <span class="heart-icon">❤️</span> <span id="likeText">Curtir esta análise</span> (<span id="likeCount">0</span>)
-                    </button>
-                </div>
-
-                <div class="card-footer">
-                    <div>
-                        <strong>Fontes Cruzadas:</strong> <span id="aiSources"></span>
-                    </div>
-                    <div class="lgpd-shield">🔒 Análise Anônima Protegida por LGPD</div>
-                </div>
-            </div>
-        </div>
+  <section id="problema" class="container">
+    <h2>Problemas Identificados</h2>
+    <div class="cards-grid">
+      <div class="card">
+        <h3>Descarte Proposital</h3>
+        <p>Vídeos antigos fora de contexto afirmam que agricultores jogam comida fora para inflacionar preços, ignorando perdas pontuais por logística ou clima.</p>
+      </div>
+      <div class="card">
+        <h3>Expansão Desordenada</h3>
+        <p>Narrativas falsas dizem que o cultivo avança sem controle, omitindo o efeito "poupa-terra" impulsionado por tecnologia em áreas consolidadas.</p>
+      </div>
+      <div class="card">
+        <h3>Pânico de Escassez</h3>
+        <p>Boatos sobre falta de itens básicos (como o arroz) induzem o público ao pânico e à estocagem desnecessária nos supermercados.</p>
+      </div>
     </div>
-</section>
+  </section>
+
+  <section id="impactos" class="container gray-bg">
+    <h2>Diagnóstico & Impactos Nacionais</h2>
+    <ul>
+      <li><strong>Prejuízos Financeiros:</strong> Tomada de decisão errada de compra e venda baseada em especulação.</li>
+      <li><strong>Danos à Reputação:</strong> Prejuízo à imagem internacional do Brasil sobre a sustentabilidade da cadeia produtiva.</li>
+      <li><strong>Ruído com o Consumidor:</strong> Afastamento da opinião pública em relação à realidade científica do campo.</li>
+    </ul>
+  </section>
+
+  <section id="checagem" class="container">
+    <h2>Checador de Fatos do Agro</h2>
+    <p>Pesquise palavras-chave como <em>"descarte"</em>, <em>"arroz"</em> ou <em>"eucalipto"</em> para conferir a análise técnica.</p>
+    <div class="search-box">
+      <input type="text" id="searchInput" placeholder="Digite o boato ou palavra-chave...">
+      <button onclick="checkFact()">Checar Notícia</button>
+    </div>
+    <div id="resultBox" class="result-box"></div>
+  </section>
+
+  <section id="ficha-tecnica" class="container gray-bg">
+    <h2>Ficha Técnica do Projeto</h2>
+    <table>
+      <tr><th>Atributo</th><th>Detalhamento</th></tr>
+      <tr><td><strong>Nome do Projeto</strong></td><td>AgroVerídico</td></tr>
+      <tr><td><strong>Tema</strong></td><td>Fake News no Agro</td></tr>
+      <tr><td><strong>Solução</strong></td><td>Plataforma interativa de checagem técnica e esclarecimento com respaldo científico (EMATER, Embrapa, técnicos).</td></tr>
+      <tr><td><strong>Público-Alvo</strong></td><td>Consumidores urbanos e pequenos/médios produtores rurais.</td></tr>
+      <tr><td><strong>Alcance</strong></td><td>Nacional. Alignment com diretrizes da COP e G20 sobre integridade da informação.</td></tr>
+    </table>
+  </section>
+
+  <footer>
+    <p>Projeto Maratona Tech | Integridade da Informação no Campo</p>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>
 
 <section class="section" id="diagnostico">
     <div class="container">
