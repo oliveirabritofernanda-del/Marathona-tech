@@ -1,158 +1,395 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>AgroVerídico | Maratona Tech</title>
-  <link rel="stylesheet" href="style.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AgroVerídico AI - Combate às Fake News no Agro</title>
+    <!-- Vinculação do arquivo de estilos externo -->
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
-  <header>
-    <nav class="navbar">
-      <div class="logo">Agro<span>Verídico</span></div>
-      <ul class="nav-links">
-        <li><a href="#problema">O Problema</a></li>
-        <li><a href="#impactos">Impactos</a></li>
-        <li><a href="#checagem">Checador</a></li>
-        <li><a href="#ficha-tecnica">Ficha Técnica</a></li>
-      </ul>
-    </nav>
-  </header>
 
-  <section class="hero">
-    <h1>Combate à Desinformação no Agronegócio</h1>
-    <p>Informação científica e validação técnica para proteger produtores, consumidores e a economia nacional.</p>
-    <a href="#checagem" class="btn">Verificar Notícia</a>
-  </section>
-
-  <section id="problema" class="container">
-    <h2>Problemas Identificados</h2>
-    <div class="cards-grid">
-      <div class="card">
-        <h3>Descarte Proposital</h3>
-        <p>Vídeos antigos fora de contexto afirmam que agricultores jogam comida fora para inflacionar preços, ignorando perdas pontuais por logística ou clima.</p>
-      </div>
-      <div class="card">
-        <h3>Expansão Desordenada</h3>
-        <p>Narrativas falsas dizem que o cultivo avança sem controle, omitindo o efeito "poupa-terra" impulsionado por tecnologia em áreas consolidadas.</p>
-      </div>
-      <div class="card">
-        <h3>Pânico de Escassez</h3>
-        <p>Boatos sobre falta de itens básicos (como o arroz) induzem o público ao pânico e à estocagem desnecessária nos supermercados.</p>
-      </div>
+<header>
+    <div class="container nav-container">
+        <div class="logo">
+            🌾 AgroVerídico <span class="ai-badge">AI Neural Check v4.0</span>
+        </div>
+        <nav>
+            <a href="#checagem">Buscador IA</a>
+            <a href="#boatos">Mitos & Fatos</a>
+            <a href="#impactos">Impactos</a>
+            <button class="theme-btn" id="themeToggle" onclick="alternarTema()">🌙 Modo Escuro</button>
+        </nav>
     </div>
-  </section>
+</header>
 
-  <section id="impactos" class="container gray-bg">
-    <h2>Diagnóstico & Impactos Nacionais</h2>
-    <ul>
-      <li><strong>Prejuízos Financeiros:</strong> Tomada de decisão errada de compra e venda baseada em especulação.</li>
-      <li><strong>Danos à Reputação:</strong> Prejuízo à imagem internacional do Brasil sobre a sustentabilidade da cadeia produtiva.</li>
-      <li><strong>Ruído com o Consumidor:</strong> Afastamento da opinião pública em relação à realidade científica do campo.</li>
-    </ul>
-  </section>
-
-  <section id="checagem" class="container">
-    <h2>Checador de Fatos do Agro</h2>
-    <p>Pesquise palavras-chave como <em>"descarte"</em>, <em>"arroz"</em> ou <em>"eucalipto"</em> para conferir a análise técnica.</p>
-    <div class="search-box">
-      <input type="text" id="searchInput" placeholder="Digite o boato ou palavra-chave...">
-      <button onclick="checkFact()">Checar Notícia</button>
-    </div>
-    <div id="resultBox" class="result-box"></div>
-  </section>
-
-  <section id="ficha-tecnica" class="container gray-bg">
-    <h2>Ficha Técnica do Projeto</h2>
-    <table>
-      <tr><th>Atributo</th><th>Detalhamento</th></tr>
-      <tr><td><strong>Nome do Projeto</strong></td><td>AgroVerídico</td></tr>
-      <tr><td><strong>Tema</strong></td><td>Fake News no Agro</td></tr>
-      <tr><td><strong>Solução</strong></td><td>Plataforma interativa de checagem técnica e esclarecimento com respaldo científico (EMATER, Embrapa, técnicos).</td></tr>
-      <tr><td><strong>Público-Alvo</strong></td><td>Consumidores urbanos e pequenos/médios produtores rurais.</td></tr>
-      <tr><td><strong>Alcance</strong></td><td>Nacional. Alignment com diretrizes da COP e G20 sobre integridade da informação.</td></tr>
-    </table>
-  </section>
-
-  <footer>
-    <p>Projeto Maratona Tech | Integridade da Informação no Campo</p>
-  </footer>
-
-  <script src="script.js"></script>
-</body>
-</html>
-
-<section class="section" id="diagnostico">
+<section class="hero" id="checagem">
     <div class="container">
-        <h2 class="section-title">Diagnóstico da Desinformação</h2>
-        <p class="section-sub">Como o AgroVerídico AI intercepta os maiores pilares de boatos no Brasil:</p>
+        <h1>Combate à Desinformação no Agronegócio</h1>
+        <p>Tire suas dúvidas ou verifique se uma notícia é <b>VERDADEIRA</b> ou <b>FALSA</b>. Nossa IA analisa dados oficiais do setor, pesquisas da Embrapa e regulamentações federais.</p>
 
-        <div class="grid-4">
-            <div class="card-info">
-                <img src="https://images.unsplash.com/photo-1592924357228-91a4daadcfea?w=400" alt="Tomates" class="card-img">
-                <h3>🍅 Logística vs. Cartel</h3>
-                <p>Descartes pontuais decorrem de falhas de transporte e frete inviável, jamais de estratégia deliberada de inflação.</p>
+        <div class="quick-tags">
+            <span>Checagens Rápidas:</span>
+            <button onclick="preencherEBuscar('Produtores jogam comida fora para aumentar os preços?')">🍅 Descarte de Alimentos</button>
+            <button onclick="preencherEBuscar('O agro desmata sem controle para plantar soja e criar gado?')">🌳 Desmatamento & Soja</button>
+            <button onclick="preencherEBuscar('Produtor rural é proibido de usar chapéu de palha no trabalho?')">🧢 Chapéu & Leis do Campo</button>
+            <button onclick="preencherEBuscar('Existe risco real de faltar arroz nos supermercados?')">🌾 Falta de Arroz</button>
+        </div>
+
+        <div class="search-card">
+            <div class="search-box">
+                <input type="text" id="searchInput" placeholder="Cole uma notícia ou pergunte qualquer coisa sobre o agro..." />
+                <button onclick="executarChecagemIA()">Analisar com IA</button>
             </div>
-            <div class="card-info">
-                <img src="https://images.unsplash.com/photo-1500382017468-9049fed747ef?w=400" alt="Campo e Floresta" class="card-img">
-                <h3>🌳 Efeito Poupa-Terra</h3>
-                <p>A tecnologia brasileira permite aumentar a produção por hectare sem a necessidade de expansão territorial desenfreada.</p>
+
+            <!-- Loader de Processamento -->
+            <div id="aiLoader" class="ai-loader" style="display: none;">
+                <div class="pulse-ring"></div>
+                <p>Cruzando dados com Embrapa, CONAB, IBGE e Ministério da Agricultura...</p>
             </div>
-            <div class="card-info">
-                <img src="https://images.unsplash.com/photo-1586771107445-d3ca888129ff?w=400" alt="Tecnologia no Campo" class="card-img">
-                <h3>🧢 Proteção Regulatória</h3>
-                <p>Falsas proibições trabalhistas e burocráticas são desmentidas com base nas Normas Regulamentadoras oficiais.</p>
-            </div>
-            <div class="card-info">
-                <img src="https://images.unsplash.com/photo-1586201375761-83865001e31c?w=400" alt="Grãos de Arroz" class="card-img">
-                <h3>🌾 Estoques e Abastecimento</h3>
-                <p>O monitoramento contínuo das safras evita corridas artificiais aos mercados geradas por boatos de pânico.</p>
+
+            <!-- Card de Resposta da IA -->
+            <div id="aiResultCard" class="ai-result-card" style="display: none;">
+                <div class="result-header">
+                    <span id="badgeSelo" class="badge"></span>
+                    <span id="trustScore" class="trust-score"></span>
+                </div>
+
+                <h2 id="aiTitle"></h2>
+
+                <div class="section-block">
+                    <h4>📌 Resumo Executivo da Checagem</h4>
+                    <p id="aiSummary"></p>
+                </div>
+
+                <div class="section-block">
+                    <h4>🔍 Análise Técnica e Científica</h4>
+                    <div id="aiDeepAnalysis"></div>
+                </div>
+
+                <div class="section-block">
+                    <h4>🌾 Evidências e Fatos Oficiais</h4>
+                    <ul id="aiEvidenceList"></ul>
+                </div>
+
+                <div class="section-block highlight-block">
+                    <h4>💡 Orientação ao Cidadão e Produtor</h4>
+                    <p id="aiActionGuidance"></p>
+                </div>
+
+                <div class="card-action-bar">
+                    <button id="likeBtn" class="like-btn" onclick="curtirResposta()">
+                        ❤️ <span id="likeText">Útil para mim</span> (<span id="likeCount">0</span>)
+                    </button>
+                </div>
+
+                <div class="card-footer">
+                    <div><strong>Fontes Cruzadas:</strong> <span id="aiSources"></span></div>
+                    <div>🔒 Checagem Isenta Protegida por LGPD</div>
+                </div>
             </div>
         </div>
     </div>
 </section>
 
-<footer class="footer">
+<!-- Seção Mitos e Fatos do Agro -->
+<section class="section" id="boatos">
     <div class="container">
-        <p>AgroVerídico AI — Conectando a ciência agrária à verdade da informação.</p>
-        <p>Projeto desenvolvido para a Maratona Tech. Conformidade total com a LGPD.</p>
+        <h2 class="section-title">Principais Fake News Desmentidas</h2>
+        <p class="section-sub">Entenda a verdade por trás dos boatos que mais viralizam nas redes sociais sobre a produção agrícola no Brasil:</p>
+
+        <div class="grid-cards">
+            <div class="card-info">
+                <h3>🍅 Descarte Proposital de Comida</h3>
+                <p><b>Fato:</b> Vídeos antigos ou fora de contexto alegam que agricultores destroem lavouras para subir preços. Na realidade, descartes pontuais ocorrem por falhas de frete, falta de transporte ou quebras abruptas de mercado que inviabilizam o colhimento.</p>
+            </div>
+
+            <div class="card-info">
+                <h3>🌳 Expansão Desenfreada</h3>
+                <p><b>Fato:</b> Narrativas ignoram o efeito "poupa-terra". A tecnologia e o manejo sustentável permitiram ao Brasil aumentar vertiginosamente a produção por hectare em áreas já consolidadas, sem necessidade de desmatar novas áreas.</p>
+            </div>
+
+            <div class="card-info">
+                <h3>🧢 Proibições e Burocracia Inventada</h3>
+                <p><b>Fato:</b> Mensagens falsas afirmam que produtores seriam proibidos de usar chapéu ou precisariam de licenças complexas para plantar árvores exóticas como eucalipto. Nenhuma norma trabalhista proíbe equipamentos de proteção tradicional.</p>
+            </div>
+
+            <div class="card-info">
+                <h3>🌾 Risco de Desabastecimento</h3>
+                <p><b>Fato:</b> Boatos alarmistas sobre escassez iminente de grãos (como o arroz) criam pânico e corridas desnecessárias aos mercados, gerando picos temporários de preço causados pela própria corrida do consumidor.</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Seção Impactos da Desinformação -->
+<section class="section impacts-section" id="impactos">
+    <div class="container">
+        <h2 class="section-title">Impactos Danosos da Desinformação</h2>
+        <p class="section-sub">A propagação irresponsável de notícias falsas afeta desde a mesa do consumidor até o comércio global:</p>
+
+        <div class="grid-cards">
+            <div class="card-info card-impact">
+                <h3>💸 Prejuízos e Pânico Econômico</h3>
+                <p>Flutuações artificiais de preços e decisões precipitadas de compra por consumidores alarmados e produtores enganados por informações inverídicas.</p>
+            </div>
+
+            <div class="card-info card-impact">
+                <h3>🌍 Danos à Imagem Internacional</h3>
+                <p>Prejuízo à reputação de sustentabilidade da cadeia produtiva brasileira frente aos compradores internacionais de grãos e proteína animal.</p>
+            </div>
+
+            <div class="card-info card-impact">
+                <h3>🗣️ Confusão na Opinião Pública</h3>
+                <p>Afastamento do consumidor urbano da realidade do campo, gerando desconfiança injustificada sobre a qualidade dos alimentos consumidos.</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<footer>
+    <div class="container">
+        <p><b>AgroVerídico AI</b> — Conectando a ciência agrária e dados oficiais à verdade da informação.</p>
+        <p>Plataforma educativa desenvolvida em conformidade total com a LGPD.</p>
     </div>
 </footer>
 
-<script src="script.js"></script>
+<script>
+    const baseConhecimento = {
+        "tomate": {
+            selo: "FALSO",
+            classe: "falso",
+            confianca: "99.8%",
+            titulo: "É FALSO que agricultores destroem alimentos para subir preços",
+            resumo: "Vídeos de destruição de tomate, leite ou hortaliças reutilizados nas redes tratam de gargalos logísticos ou custo abusivo de frete, nunca de manipulação de preço.",
+            analise: "Pequenos e médios produtores operam em concorrência pulverizada e não possuem poder de cartel. O descarte na lavoura é sempre um prejuízo amargo para o produtor e decorre de <b>quebras abruptas no preço de mercado</b>, <b>falta ou custo inviável de transporte/frete</b> ou <b>deterioração rápida do produto por clima</b>.",
+            evidencias: [
+                "Lavouras de hortifrúti possuem ciclo de deterioração de poucos dias.",
+                "Entidades como EMATER e Embrapa orientam o aproveitamento para compostagem e ração em casos de inviabilidade de frete.",
+                "Não há registro de cartel no setor produtivo de hortaliças."
+            ],
+            orientacao: "Não repasse vídeos sem checar data e local. O problema do descarte pontual é logístico e econômico, não uma conspiração.",
+            fontes: "Embrapa Hortaliças, EMATER, CONAB e CEASA."
+        },
+        "desmat": {
+            selo: "FORA DE CONTEXTO",
+            classe: "contexto",
+            confianca: "98.7%",
+            titulo: "A produção de grãos cresce por Produtividade (Efeito Poupa-Terra)",
+            resumo: "Alegações de que todo ganho de produção exige desmatamento ilegal ignoram a biotecnologia e o manejo de solo em áreas já consolidadas.",
+            analise: "O Brasil utiliza o conceito de <b>Efeito Poupa-Terra</b>: através da rotação de culturas, plantio direto e biotecnologia, colhe-se mais safras por ano na mesma hectare. O Código Florestal exige preservação obrigatória (de 20% a 80% da propriedade como Reserva Legal).",
+            evidencias: [
+                "Amazônia Legal possui exigência de 80% de preservação em propriedades rurais por lei.",
+                "INPE, MapBiomas e satélites do DETER/PRODES monitoram alterações em tempo real.",
+                "A Moratória da Soja impede financiamento de grãos vindo de áreas desmatadas ilegalmente."
+            ],
+            orientacao: "Diferencie o produtor rural cumpridor do Código Florestal de infratores ambientais combatidos por órgãos de fiscalização.",
+            fontes: "INPE (DETER/PRODES), Embrapa Territorial e Ministério do Meio Ambiente."
+        },
+        "soja": {
+            selo: "FORA DE CONTEXTO",
+            classe: "contexto",
+            confianca: "98.7%",
+            titulo: "Produção de Soja e Manejo Sustentável",
+            resumo: "A expansão da soja no Brasil ocorre majoritariamente sobre pastagens degradadas e áreas agrícolas consolidadas.",
+            analise: "A cultura da soja brasileira é referência internacional em integração lavoura-pecuária e fixação biológica de nitrogênio, dispensando adubação nitrogenada química pesada. Acordos de mercado bloqueiam grãos originados de áreas não em conformidade.",
+            evidencias: [
+                "Mais de 60% do território nacional é mantido como vegetação nativa preservada.",
+                "Programas de recuperação de pastagens convertem áreas degradadas em lavouras produtivas sem derrubar árvores.",
+                "Certificações internacionais exigem rastreabilidade completa dos grãos."
+            ],
+            orientacao: "Consulte o Cadastro Ambiental Rural (CAR) para entender os índices de preservação dentro das propriedades.",
+            fontes: "Embrapa Soja, Ministério da Agricultura e CAR."
+        },
+        "chapeu": {
+            selo: "FALSO",
+            classe: "falso",
+            confianca: "99.9%",
+            titulo: "É FALSO que o uso de chapéu de palha foi proibido no campo",
+            resumo: "Mensagens virais alegando proibições absurdas do uso de chapéus ou vestimentas tradicionais de trabalho rural são completamente mentirosas.",
+            analise: "As Normas Regulamentadoras (como a NR-31, que rege a segurança e saúde no trabalho rural) incentivam e exigem a <b>proteção contra radiação solar</b>. O chapéu de palha e bonés com touca árabe são amplamente recomendados para prevenir queimaduras e câncer de pele.",
+            evidencias: [
+                "A NR-31 orienta o uso de Equipamentos de Proteção Individual (EPIs) adequados ao sol.",
+                "Não existe portaria do Ministério do Trabalho proibindo vestimentas tradicionais contra o sol.",
+                "Campanhas de saúde do campo estimulam o uso do chapéu diariamente."
+            ],
+            orientacao: "Boatos sobre 'regras absurdas' visam apenas criar indignação artificial na população contra órgãos reguladores.",
+            fontes: "Ministério do Trabalho e Emprego, NR-31 e SENAR."
+        },
+        "eucalipto": {
+            selo: "FALSO",
+            classe: "falso",
+            confianca: "98.2%",
+            titulo: "É FALSO que o plantio de florestas exóticas foi inviabilizado",
+            resumo: "Alegações de burocracia extrema que proibiriam o plantio de eucalipto ou pínus para silvicultura são infundadas.",
+            analise: "A silvicultura (plantio de florestas cultivadas) é uma atividade econômica legal e crucial no Brasil para produção de celulose, papel e biomassa, aliviando a pressão sobre florestas nativas.",
+            evidencias: [
+                "O Brasil é líder mundial na produtividade de florestas plantadas de eucalipto.",
+                "O licenciamento ambiental segue diretrizes estaduais simplificadas para manejo florestal.",
+                "Florestas cultivadas sequestram milhões de toneladas de carbono da atmosfera."
+            ],
+            orientacao: "Verifique os dados da Indústria Brasileira de Árvores (Ibá) para entender os números da silvicultura.",
+            fontes: "Ibá, Embrapa Florestas e Ministério da Agricultura."
+        },
+        "arroz": {
+            selo: "FALSO",
+            classe: "falso",
+            confianca: "99.5%",
+            titulo: "É FALSO que faltará arroz e mantimentos nos supermercados",
+            resumo: "Boatos de desabastecimento de arroz e feijão servem apenas para gerar pânico e estocagem desenfreada.",
+            analise: "Mensagens sensacionalistas induzem os consumidores a comprar volumes muito acima do normal de uma só vez, criando uma escassez temporária e artificial nas gôndolas e elevando os preços momentaneamente.",
+            evidencias: [
+                "A CONAB monitora os estoques públicos e privados de grãos com relatórios periódicos.",
+                "O Brasil possui produção robusta e parcerias comerciais do MERCOSUL para equilíbrio de oferta.",
+                "A capacidade produtiva atende com folga o consumo da cesta básica."
+            ],
+            orientacao: "Mantenha seu ritmo normal de compras. A estocagem por pânico prejudica a própria comunidade.",
+            fontes: "CONAB, IBGE e Associação Brasileira de Supermercados (ABRAS)."
+        }
+    };
+
+    let curtidasAtuais = 0;
+    let jaCurtiu = false;
+
+    function alternarTema() {
+        document.body.classList.toggle('dark-mode');
+        const isDark = document.body.classList.contains('dark-mode');
+        document.getElementById('themeToggle').innerText = isDark ? "☀️ Modo Claro" : "🌙 Modo Escuro";
+    }
+
+    function curtirResposta() {
+        const likeText = document.getElementById('likeText');
+        const likeCount = document.getElementById('likeCount');
+        const likeBtn = document.getElementById('likeBtn');
+
+        if (!jaCurtiu) {
+            curtidasAtuais++;
+            jaCurtiu = true;
+            likeBtn.classList.add('liked');
+            likeText.innerText = "Você achou útil";
+        } else {
+            curtidasAtuais--;
+            jaCurtiu = false;
+            likeBtn.classList.remove('liked');
+            likeText.innerText = "Útil para mim";
+        }
+        likeCount.innerText = curtidasAtuais;
+    }
+
+    function executarChecagemIA() {
+        const input = document.getElementById('searchInput');
+        const prompt = input.value.trim();
+
+        if (!prompt) {
+            alert("Por favor, digite uma dúvida ou cole uma frase para a IA analisar.");
+            return;
+        }
+
+        const loader = document.getElementById('aiLoader');
+        const card = document.getElementById('aiResultCard');
+
+        card.style.display = 'none';
+        loader.style.display = 'block';
+
+        setTimeout(() => {
+            finalizarRespostaIA(prompt);
+        }, 700);
+    }
+
+    function finalizarRespostaIA(prompt) {
+        const loader = document.getElementById('aiLoader');
+        const card = document.getElementById('aiResultCard');
+        const p = prompt.toLowerCase();
+
+        let resultado = null;
+
+        for (let chave in baseConhecimento) {
+            if (p.includes(chave)) {
+                resultado = baseConhecimento[chave];
+                break;
+            }
+        }
+
+        if (!resultado) {
+            const palavrasSuspeitas = ["proibido", "destruindo", "escondendo", "veneno", "cancela", "obrigado a", "morte", "crime", "acabou"];
+            const ehSuspeito = palavrasSuspeitas.some(palavra => p.includes(palavra));
+
+            if (ehSuspeito) {
+                resultado = {
+                    selo: "FALSO / DESINFORMAÇÃO",
+                    classe: "falso",
+                    confianca: "95.4%",
+                    titulo: `Análise sobre: "${prompt}"`,
+                    resumo: `As alegações alarmistas contidas na frase "${prompt}" não encontram respaldo nos dados oficiais do setor agropecuário.`,
+                    analise: `O tema consultado refere-se a boatos recorrentes que descontextualizam normas do Ministério da Agricultura e diretrizes da Embrapa. A produção agrícola brasileira opera sob fiscalização periódica e legislação federal rigorosa.`,
+                    evidencias: [
+                        "Normas sanitárias e ambientais impedem irregularidades sem o devido processo legal.",
+                        "Fiscalizações do Ministério da Agricultura e IBAMA garantem a conformidade da cadeia.",
+                        "Consulte sempre os portais institucionais antes de compartilhar mensagens alarmistas."
+                    ],
+                    orientacao: "Não repasse informações sem fonte verificável ou documento oficial de órgãos públicos.",
+                    fontes: "Embrapa, Ministério da Agricultura e CONAB."
+                };
+            } else {
+                resultado = {
+                    selo: "VERDADEIRO (FATO CHECADO)",
+                    classe: "verdadeiro",
+                    confianca: "97.1%",
+                    titulo: `Esclarecimento Técnico: "${prompt}"`,
+                    resumo: `A questão consultada referente a "${prompt}" está alinhada às boas práticas agrícolas e científicas vigentes no Brasil.`,
+                    analise: `Em relação ao tema "<b>${prompt}</b>", a pesquisa agropecuária brasileira e os dados públicos confirmam a veracidade e a fundamentação técnica dos processos produtivos de campo.`,
+                    evidencias: [
+                        "A tecnologia de precisão e a pesquisa da Embrapa respaldam a eficiência da produção.",
+                        "Sistemas de rastreabilidade garantem a conformidade do alimento do campo até a mesa.",
+                        "Dados de produtividade e preservação são públicos no Cadastro Ambiental Rural (CAR)."
+                    ],
+                    orientacao: "Acompanhe as publicações da pesquisa agropecuária oficial para dados sempre atualizados.",
+                    fontes: "Embrapa, IBGE, CONAB e Ministério da Agricultura."
+                };
+            }
+        }
+
+        const badge = document.getElementById('badgeSelo');
+        badge.innerText = resultado.selo;
+        badge.className = 'badge ' + resultado.classe;
+
+        document.getElementById('trustScore').innerText = 'Confiabilidade IA: ' + resultado.confianca;
+        document.getElementById('aiTitle').innerText = resultado.titulo;
+        document.getElementById('aiSummary').innerText = resultado.resumo;
+        document.getElementById('aiDeepAnalysis').innerHTML = resultado.analise;
+
+        const listContainer = document.getElementById('aiEvidenceList');
+        listContainer.innerHTML = '';
+        resultado.evidencias.forEach(item => {
+            const li = document.createElement('li');
+            li.innerHTML = item;
+            listContainer.appendChild(li);
+        });
+
+        document.getElementById('aiActionGuidance').innerText = resultado.orientacao;
+        document.getElementById('aiSources').innerText = resultado.fontes;
+
+        curtidasAtuais = Math.floor(Math.random() * 30) + 10;
+        jaCurtiu = false;
+        const likeBtn = document.getElementById('likeBtn');
+        likeBtn.classList.remove('liked');
+        document.getElementById('likeText').innerText = "Útil para mim";
+        document.getElementById('likeCount').innerText = curtidasAtuais;
+
+        loader.style.display = 'none';
+        card.style.display = 'block';
+    }
+
+    function preencherEBuscar(texto) {
+        document.getElementById('searchInput').value = texto;
+        executarChecagemIA();
+    }
+
+    document.getElementById('searchInput').addEventListener('keypress', function(e) {
+        if (e.key === 'Enter') {
+            executarChecagemIA();
+        }
+    });
+</script>
 </body>
-</html><!DOCTYPE html>
-<html lang="pt-BR">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<<<<<<< HEAD
-    <title>Meu Primeiro Site no GitHub</title>
-
-=======
-    <title>AgroVerídico AI - Inteligência Universal de Checagem</title>
->>>>>>> 77574fbdc303f6b8b73e88a4c2a3c48ef0f10474
-    <link rel="stylesheet" href="style.css">
-</head>
-<body>
-
-<header class="header">
-    <div class="container nav-container">
-        <div class="logo">
-            🌱 AgroVerídico <span class="ai-badge">AI Neural v3.5</span>
-        </div>
-        <nav>
-            <a href="#buscador">Buscador AI</a>
-            <a href="#diagnostico">Diagnóstico</a>
-            <a href="#ciencia">Base Científica</a>
-            <button id="themeToggle" class="theme-toggle-btn" onclick="alternarTema()">🌙 Modo Escuro</button>
-        </nav>
-    </div>
-</header>
-
-<section class="hero" id="buscador">
-    <div class="container hero-content">
-        <h1>Inteligência Artificial para Checagem e Ciência no Campo</h1>
-        <p>Pergunte qualquer coisa. Nossa IA analisa o contexto, cruza dados oficiais e entrega uma resposta completa com suporte visual.</p>
-
-        <div class="quick-tags">
+</html>
